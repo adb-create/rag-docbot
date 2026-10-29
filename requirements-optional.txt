@@ -1,0 +1,3 @@
+# Optional backends (the app and tests work without these)
+anthropic>=0.40            # "Claude (Anthropic API)" answer engine
+sentence-transformers>=3.0 # semantic embeddings; downloads a small model on first use

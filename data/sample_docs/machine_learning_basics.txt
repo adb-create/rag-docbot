@@ -1,0 +1,16 @@
+Machine Learning Basics
+
+Training, validation and test sets
+Data is usually split into a training set used to fit the model, a validation set used to tune hyperparameters, and a test set used once at the end to estimate how the model will perform on unseen data. Evaluating on the test set repeatedly while tuning leaks information and gives an optimistic estimate. K-fold cross-validation splits the training data into k parts, trains on k minus one parts and validates on the remaining part, repeating k times so that every part is used for validation once.
+
+Overfitting and the bias-variance trade-off
+Overfitting happens when a model memorizes noise in the training data and performs much worse on new data. A large gap between training accuracy and validation accuracy is the typical symptom. High bias, or underfitting, means the model is too simple to capture the pattern, while high variance means it is too sensitive to the particular training sample. Remedies for overfitting include collecting more data, using a simpler model, early stopping, dropout for neural networks, and regularization. L2 regularization adds the sum of squared weights to the loss and shrinks weights smoothly, while L1 regularization adds the sum of absolute weights and tends to drive some weights exactly to zero, which produces sparse models.
+
+Gradient descent
+Gradient descent minimizes the loss by repeatedly moving the parameters in the direction of the negative gradient. The learning rate controls the step size: if it is too large the loss can oscillate or diverge, and if it is too small training becomes very slow. Stochastic gradient descent estimates the gradient from a single example, and mini-batch gradient descent uses a small batch, which is the standard compromise between noisy updates and the cost of using the full dataset.
+
+Evaluation metrics
+Accuracy can be misleading on imbalanced data: a model that always predicts the majority class may still score 99 percent. Precision is the fraction of predicted positives that are truly positive, and recall is the fraction of actual positives that the model finds. The F1 score is the harmonic mean of precision and recall. The ROC curve plots the true positive rate against the false positive rate across thresholds, and the area under it, AUC, summarizes ranking quality.
+
+Embeddings and retrieval
+An embedding maps text to a dense vector so that texts with similar meaning end up close together. Closeness is usually measured with cosine similarity. Retrieval-augmented generation, or RAG, first retrieves relevant passages from a document collection using embeddings and then passes them to a language model as context, so the model can answer from up-to-date or private documents and cite its sources. Splitting documents into chunks matters: chunks that are too large dilute the relevant sentence with unrelated text, while chunks that are too small lose the surrounding context.

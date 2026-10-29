@@ -1,0 +1,22 @@
+Database Systems: Core Concepts
+
+ACID properties
+A transaction is a unit of work that must satisfy the ACID properties. Atomicity means that all operations of a transaction happen or none do. Consistency means a transaction moves the database from one valid state to another valid state, preserving all integrity constraints. Isolation means concurrent transactions do not see each other's intermediate results. Durability means that once a transaction commits, its effects survive crashes, which is usually implemented with a write-ahead log.
+
+Isolation levels
+SQL defines four isolation levels: read uncommitted, read committed, repeatable read and serializable. Read uncommitted allows dirty reads, where a transaction reads data that another transaction has not committed. Read committed prevents dirty reads but still allows non-repeatable reads. Repeatable read prevents non-repeatable reads, but phantom reads can still occur in the standard definition. Serializable is the strictest level and makes concurrent execution equivalent to some serial order, at the cost of lower throughput. PostgreSQL's default isolation level is read committed.
+
+Normalization
+Normalization removes redundancy and update anomalies by decomposing tables. A table is in first normal form when every column holds atomic values and there are no repeating groups. It is in second normal form when it is in first normal form and no non-key attribute depends on only part of a composite key. It is in third normal form when no non-key attribute depends transitively on the primary key. Boyce-Codd normal form is stricter: for every non-trivial functional dependency, the determinant must be a superkey. Denormalization is sometimes done deliberately in read-heavy systems to avoid expensive joins.
+
+Indexes
+An index is a data structure that speeds up lookups at the cost of extra storage and slower writes. Most relational databases use B+ trees, which keep keys sorted, stay balanced, and store all records in the leaf nodes, which are linked together so that range queries can scan them sequentially. A hash index gives constant time equality lookups but cannot answer range queries. A composite index on (a, b) can serve queries filtering on a, or on a and b, but generally not on b alone. Too many indexes slow down inserts and updates because every index must be maintained.
+
+Joins
+An inner join returns only the rows that have matching keys in both tables. A left outer join returns all rows from the left table and fills the columns of the right table with NULL when there is no match. A cross join returns the Cartesian product of the two tables. The database optimizer may execute a join as a nested loop join, a hash join or a sort-merge join depending on table sizes and available indexes.
+
+Keys
+A primary key uniquely identifies each row and cannot be NULL. A foreign key is a column that references the primary key of another table and enforces referential integrity. A candidate key is any minimal set of columns that can uniquely identify a row, and one of the candidate keys is chosen as the primary key.
+
+NoSQL and the CAP theorem
+The CAP theorem says that when a network partition happens, a distributed data store has to choose between consistency and availability. Many NoSQL stores such as Cassandra favour availability and offer eventual consistency, while systems such as HBase favour consistency.

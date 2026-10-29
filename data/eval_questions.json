@@ -1,0 +1,40 @@
+[
+  {"question": "What are the four conditions needed for a deadlock?", "evidence": "mutual exclusion, hold and wait, no preemption, and circular wait"},
+  {"question": "Why can a very large time quantum hurt Round Robin?", "evidence": "Round Robin degrades into First-Come First-Served"},
+  {"question": "What does the TLB do?", "evidence": "small hardware cache of recent page table entries"},
+  {"question": "What is thrashing?", "evidence": "more time paging than executing"},
+  {"question": "How does aging help with starvation?", "evidence": "gradually raising the priority"},
+  {"question": "Which resources are shared between threads of the same process?", "evidence": "share the code, heap and open files"},
+  {"question": "What anomaly can happen with FIFO page replacement?", "evidence": "Belady's anomaly"},
+  {"question": "How is a mutex different from a binary semaphore?", "evidence": "only the thread that locked it may unlock it"},
+
+  {"question": "What does durability mean in ACID and how is it implemented?", "evidence": "write-ahead log"},
+  {"question": "Which isolation level allows dirty reads?", "evidence": "Read uncommitted allows dirty reads"},
+  {"question": "What does a left outer join do when there is no match?", "evidence": "fills the columns of the right table with NULL"},
+  {"question": "Why are B+ trees good for range queries?", "evidence": "linked together so that range queries can scan them sequentially"},
+  {"question": "When does a table reach third normal form?", "evidence": "depends transitively on the primary key"},
+  {"question": "Can a composite index on two columns help a query that filters only on the second column?", "evidence": "but generally not on b alone"},
+  {"question": "What is the default isolation level in PostgreSQL?", "evidence": "default isolation level is read committed"},
+
+  {"question": "What are the steps of the TCP three-way handshake?", "evidence": "the client sends a SYN, the server replies with a SYN-ACK"},
+  {"question": "Why is UDP used for streaming and games?", "evidence": "lower latency"},
+  {"question": "How does TCP slow start grow the congestion window?", "evidence": "doubles every round trip time"},
+  {"question": "Why does HTTP/3 use QUIC?", "evidence": "avoid head-of-line blocking at the transport layer"},
+  {"question": "How many usable host addresses are in a /24 network?", "evidence": "254 are usable for hosts"},
+  {"question": "Which DNS record type points a name to an IPv6 address?", "evidence": "AAAA record maps it to an IPv6 address"},
+  {"question": "What is the role of the TTL in DNS?", "evidence": "set by the record's TTL"},
+
+  {"question": "How does L1 regularization differ from L2?", "evidence": "drive some weights exactly to zero"},
+  {"question": "Why is accuracy misleading on imbalanced data?", "evidence": "always predicts the majority class"},
+  {"question": "What does k-fold cross-validation do?", "evidence": "trains on k minus one parts"},
+  {"question": "What happens if the learning rate is too large?", "evidence": "oscillate or diverge"},
+  {"question": "What does RAG do?", "evidence": "passes them to a language model as context"},
+  {"question": "Why does chunk size matter for retrieval?", "evidence": "dilute the relevant sentence"},
+
+  {"question": "Who won the 2011 cricket world cup?", "answerable": false},
+  {"question": "What is the recipe for chicken biryani?", "answerable": false},
+  {"question": "How tall is Mount Everest?", "answerable": false},
+  {"question": "What is the capital of Australia?", "answerable": false},
+  {"question": "How do I configure a Kubernetes ingress controller?", "answerable": false},
+  {"question": "How do I deploy a neural network on a GPU cluster?", "answerable": false}
+]

@@ -1,0 +1,19 @@
+Operating Systems: Core Concepts
+
+Processes and threads
+A process is a program in execution. It has its own address space, open file descriptors and process control block (PCB), which the kernel uses to track its state. A thread is a lightweight unit of execution inside a process. Threads of the same process share the code, heap and open files, but each thread has its own stack and register set. Because threads share memory, creating a thread and switching between threads is cheaper than creating or switching between processes, but shared memory also means threads need synchronization to avoid race conditions.
+
+CPU scheduling
+The scheduler decides which ready process runs next. First-Come First-Served is simple but suffers from the convoy effect, where short jobs wait behind a long one. Shortest Job First minimizes average waiting time but can starve long jobs, and it requires knowing burst times in advance. Round Robin gives every process a fixed time quantum, usually 10 to 100 milliseconds, and moves it to the back of the ready queue when the quantum expires. If the quantum is too large, Round Robin degrades into First-Come First-Served; if it is too small, the system wastes time on context switches. Priority scheduling can starve low priority processes, which is usually fixed with aging, gradually raising the priority of processes that have waited a long time.
+
+Context switching
+A context switch saves the state of the running process in its PCB and loads the saved state of the next process. It is pure overhead because no useful user work happens while it takes place. The cost includes saving registers, switching page tables, and the loss of cache and TLB contents.
+
+Deadlock
+A deadlock occurs when a set of processes are each waiting for a resource held by another process in the set. Four conditions must hold at the same time: mutual exclusion, hold and wait, no preemption, and circular wait. Breaking any one of them prevents deadlock. A common practical approach is to impose a global ordering on resources and require every process to request them in that order, which eliminates circular wait. The Banker's algorithm avoids deadlock by granting a request only if the system stays in a safe state.
+
+Synchronization
+A mutex allows only one thread at a time into a critical section, and only the thread that locked it may unlock it. A semaphore is a counter with two atomic operations, wait and signal. A counting semaphore can allow several threads to use a pool of identical resources. A binary semaphore behaves like a mutex but can be signalled by a different thread than the one that waited. The classic synchronization problems include the producer-consumer problem, the readers-writers problem and the dining philosophers problem.
+
+Virtual memory and paging
+Virtual memory lets a process use more memory than is physically installed by keeping only the needed pages in RAM. Memory is divided into fixed-size pages, commonly 4 KB, which the page table maps to physical frames. A page fault happens when a process touches a page that is not currently in RAM; the operating system loads it from disk and restarts the instruction. The Translation Lookaside Buffer, or TLB, is a small hardware cache of recent page table entries that avoids a slow extra memory access on most translations. When RAM is full, a page replacement algorithm chooses a victim page. Least Recently Used approximates the optimal policy well, while FIFO can suffer from Belady's anomaly, where giving a process more frames increases its page faults. If the system spends more time paging than executing, it is thrashing.

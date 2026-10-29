@@ -1,0 +1,19 @@
+Computer Networks: Core Concepts
+
+The OSI and TCP/IP models
+The OSI model has seven layers: physical, data link, network, transport, session, presentation and application. The TCP/IP model that the internet actually uses collapses these into four layers: link, internet, transport and application. Switches operate at the data link layer and forward frames using MAC addresses, while routers operate at the network layer and forward packets using IP addresses.
+
+TCP and UDP
+TCP is connection-oriented and provides reliable, ordered delivery using sequence numbers, acknowledgements and retransmissions. A connection is established with a three-way handshake: the client sends a SYN, the server replies with a SYN-ACK, and the client answers with an ACK. UDP is connectionless and does not guarantee delivery or ordering, which gives it lower latency and makes it a common choice for DNS queries, video streaming and online games.
+
+Congestion and flow control
+Flow control stops a fast sender from overwhelming a slow receiver, and TCP implements it with a sliding window advertised by the receiver. Congestion control protects the network itself. In slow start, the congestion window begins small and doubles every round trip time until it reaches a threshold, after which it grows linearly in the congestion avoidance phase. When packet loss is detected, TCP reduces its window sharply.
+
+DNS
+The Domain Name System translates human-readable names into IP addresses. A recursive resolver asks the root servers, then the top-level domain servers, and finally the authoritative name server for the domain. Results are cached for a period set by the record's TTL, which reduces load and latency. An A record maps a name to an IPv4 address, an AAAA record maps it to an IPv6 address, and a CNAME record makes one name an alias of another.
+
+HTTP and TLS
+HTTP is a request-response protocol. Status codes in the 2xx range indicate success, 3xx redirection, 4xx client errors such as 404 Not Found, and 5xx server errors such as 503 Service Unavailable. HTTP/2 multiplexes many requests over a single TCP connection, and HTTP/3 runs over QUIC, which is built on UDP, to avoid head-of-line blocking at the transport layer. HTTPS is HTTP carried over TLS. During the TLS handshake the server presents a certificate, the two sides agree on session keys, and from then on data is encrypted with fast symmetric cryptography.
+
+IP addressing
+An IPv4 address is 32 bits long, while an IPv6 address is 128 bits long. A subnet mask such as /24 says how many leading bits identify the network. A /24 network has 256 addresses, of which 254 are usable for hosts because the first is the network address and the last is the broadcast address. DHCP automatically assigns IP addresses to devices when they join a network, and NAT lets many devices on a private network share one public IP address.
