@@ -7,6 +7,8 @@ they came from. If the documents don't contain the answer, DocBot says so instea
 It runs fully offline by default (no API key, no model download) and can switch to Claude or a
 local Ollama model for fluent answers.
 
+![DocBot answering a question with its source passage and relevance score](docs/screenshot.png)
+
 ## Features
 
 - **Sentence-aware chunking** with overlap, so facts are never cut in half and every chunk keeps its file and page number.
